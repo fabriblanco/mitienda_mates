@@ -1,0 +1,91 @@
+
+
+@import url('https://fonts.googleapis.com/css2? family= Bebas+Neue & family= Kanit & family= Lato:wght@700 & display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+
+.menuedit a{
+  text-transform: uppercase; /* todo a mayuscula*/
+  font-family: "Bebas Neue", cursive;
+  color: white; 
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+
+.a {
+  text-transform: uppercase; /* todo a mayuscula*/
+  font-family: "Bebas Neue", cursive;
+  color: white; 
+  justify-content: space-between;
+  align-items: center;
+}
+
+.per:hover{
+  
+  color:#0D6EFD  !important;
+}
+
+
+.tipoycolor{
+  font-family: "Bebas Neue", cursive;
+  color: white; 
+}
+
+.tipoycolor li a{
+  font-family: "Bebas Neue", cursive;
+  color: white; 
+}
+
+.foto{
+  background-color:#0D6EFD;
+  padding: 5px;
+}
+
+.tipoletra{
+  font-family: "Bebas Neue", cursive; 
+}
+
+
+.editcard  {
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.9;
+  cursor: pointer;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.2); /* para ponerle sombra*/
+  align-items: center;
+  justify-content: center;
+  width: 25rem;
+}
+
+/* para que las card tengan el mismo tamaño*/
+.cent{
+  display: flex;
+  justify-content: center;
+}
+
+
+
+
+
+
+
+.editcard:hover{
+  box-shadow: 5px 5px 20px rgba(0,0,0,0.4);
+  transform: translateY(-4%); /* se mueva de manera vertical al pasar el click */
+}
+
+
+
+
+
