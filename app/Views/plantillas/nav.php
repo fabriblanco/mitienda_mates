@@ -1,5 +1,6 @@
 
     <header>
+    <?php $session=session(); ?>
       <nav class="menuedit navbar navbar-expand-lg navbar-dark bg-dark" >
   <div class="container-fluid">
       <a href="#">
@@ -43,16 +44,41 @@
              Terminos y condiciones </a>
           </li>
 
-          <li class="nav-item">
-            <a class="per nav-link"  href="#"> <i class="fas fa-shopping-cart"> 0 </i> </a>
-          </li>
-          <li class="nav-item">
-            <a class="per nav-link"  href="<?php echo base_url (' formRegistro ');  ?>" > <i class="fa-solid fa-user"></i> </a>
-          </li>
         </ul>
-      <a href="<?php echo base_url (' formIniciarSesion ');  ?>">
-      <button class="tipoletra per btn  btn-secondary btn-secondary-outline" type="button">Iniciar Sesion</button>
-      </a>
+      
+
+      <?php if (session('login')) { ?>
+
+        
+              <li class="nav-item">
+              <a class="per nav-link"  href="#"> <i class="fas fa-shopping-cart"> 0 </i> </a>
+              </li>
+
+              <li class="nav-item">
+              <a class="per nav-link"  href="#"> 
+                <?= $session->get('nombre'); ?>
+              </a>
+              </li>
+              <a  href="<?php echo base_url (' cerrarSesion ');  ?>">
+              <button class="tipoletra per btn  btn-secondary btn-secondary-outline" type="button">Cerrar Sesion</button>
+              </a>
+        
+
+
+            <?php } else { ?>
+              
+              <li class="nav-item">
+              <a class="per nav-link"  href="<?php echo base_url (' formRegistro ');  ?>"> <i class="fas fa-shopping-cart"> 0 </i> </a>
+              </li>
+              <li class="nav-item mb-4">
+              <a class="per nav-link"  href="<?php echo base_url (' formRegistro ');  ?>" > <i class="fa-solid fa-user"></i> </a>
+              </li>
+
+              <a  href="<?php echo base_url (' formIniciarSesion ');  ?>">
+              <button class="tipoletra per btn  btn-secondary btn-secondary-outline" type="button">Iniciar Sesion</button>
+              </a>
+              
+            <?php } ?>
       
         
     </div>

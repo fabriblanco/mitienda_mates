@@ -40,10 +40,11 @@ $routes->get('comercializacion', 'Home::comercializacion');
 
 $routes->get('formIniciarSesion', 'userController::formIniciarSesion');
 $routes->get('formRegistro', 'userController::formRegistro');
+$routes->get('cerrarSesion', 'userController::cerrar_sesion');
 
 
 
-$routes->post('inicioSesion', 'userController::formIniciarSesion');
+$routes->post('login', 'userController::verificar_usuario');
 $routes->post('consulta', 'userController::registrar_consulta');
 $routes->post('persona', 'userController::registrar_persona');
 

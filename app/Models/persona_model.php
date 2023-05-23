@@ -12,7 +12,7 @@ class persona_model extends Model
     protected $useAutoIncrement = true;
 
     protected $returnType     = 'array';
-    protected $useSoftDeletes = true;
+    protected $useSoftDeletes = false;
 
     protected $allowedFields = ['persona_nombre', 'persona_apellido','persona_email','persona_password'];
 

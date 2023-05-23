@@ -70,6 +70,80 @@ class userController extends BaseController
 
   }
 
+  public function verificar_usuario()
+    {
+        $request = \Config\Services::request();
+        $session = \Config\Services::session();
+        $validation = \Config\Services::validation();
+
+        $validation->setRules(
+            [
+                'correo' => 'required|valid_email|',
+                'pass' => 'required|min_length[8]',
+            ],
+            [
+                "correo" => [
+                    "required" => "El correo es obligatorio.",
+                    "valid_email" => "El formato no es correcto.",
+                ],
+                "pass" => [
+                    "required" => "La contraseña es obligatoria.",
+                    "min_length" => "La contraseña contiene al menos 8 caracteres."
+                ],
+            ]
+        );
+
+        if ($validation->withRequest($this->request)->run()) {
+
+            $persona_model = new persona_model();
+
+            $email = $request->getPost('correo');
+            $pass = $request->getPost('pass');
+            $user = $persona_model->where('persona_email', $email)->first();
+
+            if ($user) {
+                $pass_user = $user['persona_password'];
+                $pass_verif = password_verify($pass, $pass_user);
+
+                if ($pass_verif) {
+                    $data = [
+                        'id' => $user['id_persona'],
+                        'nombre' => $user['persona_nombre'],
+                        'apellido' => $user['persona_apellido'],
+                        'perfil' => $user['id_perfil'],
+                        'login' =>  TRUE
+                    ];
+
+                    $session->set($data);
+
+                    switch ($session->get('perfil')) {
+                        case '1':
+                            return redirect()->route('user_admin');
+                            break;
+                        case '0':
+                            return redirect()->route('/');
+                            break;
+                    }
+                } else {
+                    $session->setFlashdata('mensaje', 'Usuario y/o contraseña incorrecta');
+                    return redirect()->route('formIniciarSesion');
+                }
+            } else {
+                $session->setFlashdata('mensaje', 'Usuario no registrado, Usuario y/o contraseña incorrecta');
+                return redirect()->route('formIniciarSesion');
+            }
+
+        } else {
+            $data['validation'] = $this->validator;
+            $data['titulo'] = 'Iniciar Sesión';
+            echo view('plantillas/encabezado', $data);
+            echo view('plantillas/nav');
+            echo view('plantillas/formIniciarSesion');
+            echo view('plantillas/footer');
+        }
+    }
+
+
 
 
 public function registrar_persona(){
@@ -92,7 +166,7 @@ public function registrar_persona(){
                 'persona_nombre' => $request->getPost('nombre'),
                 'persona_apellido' => $request->getPost('apellido'),
                 'persona_email' => $request->getPost('mail'),
-                'persona_password' => $request->getPost('password')
+                'persona_password' => password_hash($request->getPost('password'), PASSWORD_BCRYPT)
             ];
 
             $registroPersona = new persona_model();
@@ -111,6 +185,16 @@ public function registrar_persona(){
         echo view('plantillas/footer');
 
   }
+
+  
+
+
+
+public function cerrar_sesion(){
+$session = \Config\Services::session();
+$session->destroy();
+return redirect()->route('formIniciarSesion');
+}
 
 }
 
