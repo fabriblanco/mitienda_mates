@@ -1,7 +1,7 @@
 
     <header>
     <?php $session=session(); ?>
-      <nav class="menuedit navbar navbar-expand-lg navbar-dark bg-dark" >
+      <nav class="menuedit navbar navbar-expand-lg navbar-dark bg-dark text-center" >
   <div class="container-fluid">
       <a href="#">
       <img src="public/img/descargaaa.png" alt="ddd" height="70" width="150">
@@ -28,7 +28,7 @@
           </ul>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item p-0">
           <a class="per nav-link" href="<?php echo base_url ('quienesSomos');  ?>"> Quienes somos</a>
         </li>
           <li class="nav-item">
@@ -50,17 +50,17 @@
       <?php if (session('login')) { ?>
 
         
-              <li class="nav-item">
-              <a class="per nav-link"  href="#"> <i class="fas fa-shopping-cart"> 0 </i> </a>
+              <li class="nav-item mb-4">
+              <a class="per mb-4 nav-link"  href="#"> <i class="fa-sharp fa-solid fa-cart-shopping"> 3 </i> 2 </a>
               </li>
-
+              
               <li class="nav-item">
               <a class="per nav-link"  href="#"> 
                 <?= $session->get('nombre'); ?>
               </a>
               </li>
               <a  href="<?php echo base_url (' cerrarSesion ');  ?>">
-              <button class="tipoletra per btn  btn-secondary btn-secondary-outline" type="button">Cerrar Sesion</button>
+              <button class="tipoletra per btn  btn-secondary btn-secondary-outline" type="button">Salir</button>
               </a>
         
 

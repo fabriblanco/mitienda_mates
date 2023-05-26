@@ -14,7 +14,7 @@ class persona_model extends Model
     protected $returnType     = 'array';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['persona_nombre', 'persona_apellido','persona_email','persona_password'];
+    protected $allowedFields = ['persona_nombre', 'persona_apellido','persona_email','persona_password', 'id_perfil'];
 
     // Dates
     protected $useTimestamps = false;

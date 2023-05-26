@@ -120,7 +120,7 @@ class userController extends BaseController
                         case '1':
                             return redirect()->route('user_admin');
                             break;
-                        case '0':
+                        case '2':
                             return redirect()->route('/');
                             break;
                     }
@@ -166,7 +166,9 @@ public function registrar_persona(){
                 'persona_nombre' => $request->getPost('nombre'),
                 'persona_apellido' => $request->getPost('apellido'),
                 'persona_email' => $request->getPost('mail'),
-                'persona_password' => password_hash($request->getPost('password'), PASSWORD_BCRYPT)
+                'persona_password' => password_hash($request->getPost('password'), PASSWORD_BCRYPT),
+                'id_perfil'=> 2
+
             ];
 
             $registroPersona = new persona_model();
