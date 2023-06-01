@@ -125,11 +125,11 @@ class userController extends BaseController
                             break;
                     }
                 } else {
-                    $session->setFlashdata('mensaje', 'Usuario y/o contraseña incorrecta');
+                    $session->setFlashdata('mensaje', 'Correo y/o contraseña incorrecta, no se pudo iniciar sesion');
                     return redirect()->route('formIniciarSesion');
                 }
             } else {
-                $session->setFlashdata('mensaje', 'Usuario no registrado, Usuario y/o contraseña incorrecta');
+                $session->setFlashdata('mensaje', 'Correo y/o contraseña invalida,no ha sido registrado');
                 return redirect()->route('formIniciarSesion');
             }
 
@@ -148,26 +148,38 @@ class userController extends BaseController
 
 public function registrar_persona(){
     
-    $request = \config\Services::request();
+    $request = \Config\Services::request();
+    $session = \Config\Services::session();
+    $validation = \Config\Services::validation();
 
-    if($request->is('post')){
-        $rules = [
-            'nombre'=> 'required',
-            'apellido'=> 'required',
-            'mail'=> 'required|valid_email',
-            'password'=> 'required'
-        ];
+    $validation->setRules(
+        [
+            'nombre' => 'required',
+            'apellido' => 'required',
+            'mail' => 'required|valid_email|',
+            'password' => 'required|min_length[8]',
+        ],
+        [
+            "mail" => [
+                "required" => "El correo es obligatorio.",
+                "valid_email" => "El formato no es correcto.",
+            ],
+            "password" => [
+                "required" => "La contraseña es obligatoria.",
+                "min_length" => "La contraseña contiene al menos 8 caracteres."
+            ],
+        ]
+    );
 
-        $validations = $this->validate($rules);
 
-        if ($validations) {
+    if ($validation->withRequest($this->request)->run()) {
             $data = [
 
                 'persona_nombre' => $request->getPost('nombre'),
                 'persona_apellido' => $request->getPost('apellido'),
                 'persona_email' => $request->getPost('mail'),
                 'persona_password' => password_hash($request->getPost('password'), PASSWORD_BCRYPT),
-                'id_perfil'=> 1
+                'id_perfil'=> 2
 
             ];
 
@@ -179,7 +191,6 @@ public function registrar_persona(){
 
             $data['validation'] = $this->validator;
         }
-    }
     $data['titulo'] = 'formRegistro';
         echo view('plantillas/encabezado',$data);
         echo view('plantillas/nav');

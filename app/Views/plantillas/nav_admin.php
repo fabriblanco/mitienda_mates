@@ -24,7 +24,7 @@
           </li>
 
           <li class="nav-item">
-            <a class=" per nav-link"  href="#"> Registrar Producto </a>
+            <a class=" per nav-link"  href="<?php echo base_url ('carga_productos');  ?>"> Registrar Producto </a>
           </li>
 
           <li class="nav-item">
