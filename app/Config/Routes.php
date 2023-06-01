@@ -37,16 +37,20 @@ $routes->get('quienesSomos', 'Home::quienesSomos');
 $routes->get('terminosYcondiciones', 'Home::terminosYcondiciones');
 $routes->get('contacto', 'Home::contacto');
 $routes->get('comercializacion', 'Home::comercializacion');
+$routes->get('formProducto', 'Home::formProducto');
 
+
+/*LOGIN*/
 $routes->get('formIniciarSesion', 'userController::formIniciarSesion');
 $routes->get('formRegistro', 'userController::formRegistro');
 $routes->get('cerrarSesion', 'userController::cerrar_sesion');
-
-
-
 $routes->post('login', 'userController::verificar_usuario');
 $routes->post('consulta', 'userController::registrar_consulta');
 $routes->post('persona', 'userController::registrar_persona');
+
+$routes->get('user_admin', 'admin_controller::nav_admin');
+$routes->get('carga_productos', 'admin_controller::vista_carga_Productos');
+$routes->post('registra_producto', 'admin_controller::registrar_producto');
 
 
 /*

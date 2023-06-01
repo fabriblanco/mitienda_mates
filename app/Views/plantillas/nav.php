@@ -50,15 +50,22 @@
       <?php if (session('login')) { ?>
 
         
-              <li class="nav-item mb-4">
-              <a class="per mb-4 nav-link"  href="#"> <i class="fa-sharp fa-solid fa-cart-shopping"> 3 </i> 2 </a>
+              
+      
+
+              <li class="nav-item mb-4 tipoletra">
+              
+              <a class="per nav-link tipoletra"  href="#"> 
+              <i class="fa-solid fa-user tipoletra"> <br>
+              <?= $session->get('nombre'); ?>  
+              </i> </a>
+              </li>
+
+              <li class="nav-item">
+              <a class="per mx-2 mb-4 nav-link"  href="#"> 
+              <i class="fa-sharp fa-solid fa-cart-shopping"> <br>  Ver </i>   </a>
               </li>
               
-              <li class="nav-item">
-              <a class="per nav-link"  href="#"> 
-                <?= $session->get('nombre'); ?>
-              </a>
-              </li>
               <a  href="<?php echo base_url (' cerrarSesion ');  ?>">
               <button class="tipoletra per btn  btn-secondary btn-secondary-outline" type="button">Salir</button>
               </a>
@@ -67,11 +74,15 @@
 
             <?php } else { ?>
               
-              <li class="nav-item">
-              <a class="per nav-link"  href="<?php echo base_url (' formRegistro ');  ?>"> <i class="fas fa-shopping-cart"> 0 </i> </a>
+              
+
+              <li class="nav-item ">
+              <a class="per mx-2 mb-4 nav-link"  href="<?php echo base_url (' formRegistro ');  ?>"> 
+              <i class="fa-sharp fa-solid fa-cart-shopping">  </i>  </a>
               </li>
-              <li class="nav-item mb-4">
-              <a class="per nav-link"  href="<?php echo base_url (' formRegistro ');  ?>" > <i class="fa-solid fa-user"></i> </a>
+
+              <li class="nav-item mx-2 mb-4">
+              <a class="per nav-link"  href="<?php echo base_url (' formRegistro ');  ?>" > <i class="fa-solid fa-user"> Reg</i> </a>
               </li>
 
               <a  href="<?php echo base_url (' formIniciarSesion ');  ?>">

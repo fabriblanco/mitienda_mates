@@ -5,7 +5,7 @@
 <div class="tipoletra container">
 <div class="row">
      <div class="col-6 mx-auto">
-     <h5 class="text-uppercase fw-bold "> formulario probbb utlii </h5>
+     <h5 class="text-uppercase fw-bold "> formulario  </h5>
         <?php $validation = \Config\Services::validation(); ?>
           <form class="" action="<?php echo base_url ('consulta') ?>" method="POST">
               <div class="mb-3">

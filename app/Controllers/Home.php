@@ -67,5 +67,14 @@ class Home extends BaseController
         echo view('plantillas/footer');
     }
 
+    public function formProducto()
+    {
+
+        $data['titulo'] = 'formProductos';
+        echo view('plantillas/encabezado', $data);
+        echo view('plantillas/nav');
+        echo view('plantillas/formProducto');
+        echo view('plantillas/footer');
+    }
 
 }

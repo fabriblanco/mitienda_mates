@@ -167,7 +167,7 @@ public function registrar_persona(){
                 'persona_apellido' => $request->getPost('apellido'),
                 'persona_email' => $request->getPost('mail'),
                 'persona_password' => password_hash($request->getPost('password'), PASSWORD_BCRYPT),
-                'id_perfil'=> 2
+                'id_perfil'=> 1
 
             ];
 
