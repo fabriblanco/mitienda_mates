@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\productos_model;
+
 class Home extends BaseController
 {
     public function index()
@@ -29,13 +31,15 @@ class Home extends BaseController
 
     public function productos()
     {
+       
+        $producto = new productos_model();
+
+        $data['productos'] = $producto->where('estado_producto', 1)->where('producto_stock >', 0)->join('categorias', 'categorias.id_categoria = productos.producto_categoria')->findAll();
         $data['titulo'] = 'productos';
         echo view('plantillas/encabezado', $data);
         echo view('plantillas/nav');
-        echo view('plantillas/productosDestacados');
         echo view('plantillas/productos');
         echo view('plantillas/footer');
-
     }
 
     public function terminosYcondiciones()

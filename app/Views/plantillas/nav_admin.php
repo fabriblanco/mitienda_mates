@@ -1,7 +1,7 @@
 
 <header>
     <?php $session=session(); ?>
-      <nav class="menuedit navbar navbar-expand-lg navbar-dark bg-dark text-center" >
+      <nav class="menuedit navbar navbar-expand-lg navbar-dark bg-dark text-center justify-content-around" >
   <div class="container-fluid">
       <a href="#">
       <img src="public/img/descargaaa.png" alt="ddd" height="70" width="150">
@@ -17,7 +17,7 @@
           <a class="per nav-link" href="#"> Ver Consultas </a>
         </li>
           <li class="nav-item">
-            <a class="per nav-link"  href="#" > Listar Productos </a>
+            <a class="per nav-link"  href="<?php echo base_url (' productosAdmin ');  ?>" >Ver Productos</a>
           </li>
           <li class="nav-item">
             <a class="per nav-link"  href="#" > Listar Ventas </a>
@@ -37,9 +37,11 @@
               <?= $session->get('nombre'); ?>  
               </i> </a>
               </li>
+              <li class="nav-item ">
               <a  href="<?php echo base_url (' cerrarSesion ');  ?>">
               <button class="tipoletra per btn  btn-secondary btn-secondary-outline" type="button">Salir</button>
               </a>
+              </li>
 
         </ul>
     </div>

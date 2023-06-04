@@ -28,6 +28,27 @@ class userController extends BaseController
         echo view('plantillas/formIniciarSesion');
         echo view('plantillas/footer');
     }
+
+    public function perfil()
+    {
+        if (session()->login) {
+            if (session()->perfil == 1) {
+                $data['titulo'] = 'Perfil';
+                echo view('plantillas/encabezado', $data);
+                echo view('plantillas/nav_admin');
+                echo view('plantillas/perfil');
+                echo view('plantillas/footer');
+            }else {
+                $data['titulo'] = 'Perfil';
+                echo view('plantillas/encabezado', $data);
+                echo view('plantillas/nav');
+                echo view('plantillas/perfil');
+                echo view('plantillas/footer');
+            }
+        } else {
+            return redirect()->route('/');
+        }
+    }
     
   public function registrar_consulta(){
     $request = \config\Services::request();
@@ -110,6 +131,7 @@ class userController extends BaseController
                         'id' => $user['id_persona'],
                         'nombre' => $user['persona_nombre'],
                         'apellido' => $user['persona_apellido'],
+                        'email' => $user['persona_email'],
                         'perfil' => $user['id_perfil'],
                         'login' =>  TRUE
                     ];
@@ -160,6 +182,12 @@ public function registrar_persona(){
             'password' => 'required|min_length[8]',
         ],
         [
+            "nombre" => [
+                "required" => "El nombre es obligatorio.",
+            ],
+            "apellido" => [
+                "required" => "El apellido es obligatorio.",
+            ],
             "mail" => [
                 "required" => "El correo es obligatorio.",
                 "valid_email" => "El formato no es correcto.",

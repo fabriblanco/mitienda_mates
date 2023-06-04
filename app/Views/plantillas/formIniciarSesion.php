@@ -1,4 +1,4 @@
-<div class="tipoletra">
+<div class="tipoletra ">
 <h1 class="text-center">Iniciar Sesion</h1>
 <div class="row">
      <div class="col-6 mx-auto">
@@ -11,7 +11,7 @@
                 </div>
             <?php } ?>
 
-              <div class="mb-3">
+              <div class="mb-3 container">
                 <label for="correo" class="form-label">Email: </label>
                <input type="email" name="correo" class="form-control" placeholder="ingrese email" id="mail" >
                <?php if($validation->getError('correo')) { ?>
@@ -31,9 +31,12 @@
               </div>
            
               
-             <div class="col-auto mb-2">
+             <div class="col-auto mb-2 text-center">
              <button type="submit" class="btn btn-primary" mb-3> Iniciar Sesion </button>
              </div>
+             <div class="mx-auto">
+                <h6 class="mb-2"> Aun no Posee una Cuenta ? Regístrate ya </h6> <a class="btn btn-outline-info mb-2" href="<?php echo base_url('formRegistro'); ?>">Registrarse</a>
+
               
             
              </form>

@@ -48,9 +48,22 @@ $routes->post('login', 'userController::verificar_usuario');
 $routes->post('consulta', 'userController::registrar_consulta');
 $routes->post('persona', 'userController::registrar_persona');
 
+
 $routes->get('user_admin', 'admin_controller::nav_admin');
+
+//productos
 $routes->get('carga_productos', 'admin_controller::vista_carga_Productos');
 $routes->post('registra_producto', 'admin_controller::registrar_producto');
+$routes->get('productosAdmin', 'admin_controller::productosAdmin');
+$routes->get('datosUser', 'userController::perfil');
+$routes->get('gestionProd', 'productoController::gestion_prod');
+
+$routes->get('productoController/eliminar_Producto/(:num)', 'productos_controller::eliminar_Producto/$1');
+$routes->get('productoController/editar_Producto/(:num)', 'productoController::editar_Producto/$1');
+
+
+
+
 
 
 /*

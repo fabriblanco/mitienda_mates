@@ -64,6 +64,11 @@
 
                 echo form_dropdown('categoria',$lista,'0','class="form-control"');
                 ?>
+                <?php if($validation->getError('categoria')) { ?>
+              <div class="alert alert-danger mt-2">
+                <?= $error = $validation->getError ('categoria'); ?>
+              </div>
+              <?php } ?>
               
              <div class="col-auto mb-2">
              <a href="<?php base_url('registra_producto'); ?> "> <button type="submit" class="btn btn-primary" mb-3 >Agregar Producto </button> </a>

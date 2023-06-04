@@ -45,6 +45,14 @@
   color: white; 
 }
 
+.textDegra{
+    background:#ccc;
+    background: radial-gradient(#eff1ff, #000);
+    font-family: ;
+   -webkit-text-fill-color:transparent;
+   -webkit-background-clip:text;
+}
+
 .tipoycolor li a{
   font-family: "Bebas Neue", cursive;
   color: white; 

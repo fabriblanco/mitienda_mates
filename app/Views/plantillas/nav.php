@@ -66,10 +66,11 @@
               <i class="fa-sharp fa-solid fa-cart-shopping"> <br>  Ver </i>   </a>
               </li>
               
+              <li class="nav-item">
               <a  href="<?php echo base_url (' cerrarSesion ');  ?>">
               <button class="tipoletra per btn  btn-secondary btn-secondary-outline" type="button">Salir</button>
               </a>
-        
+              </li>
 
 
             <?php } else { ?>
