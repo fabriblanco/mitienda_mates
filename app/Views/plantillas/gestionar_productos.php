@@ -1,9 +1,9 @@
 
-<section class=" tipoletra my-5">
-    <h2 class="text-center my-5"> Nuestros Productos </h2>
+<section class=" tipoletra my-3">
+    <h1 class="text-center fw-bold text-uppercase my-4" style="color:#008080;"> nuestros productos </h1>
     
 
-<table class="table table-hover mb-0">
+<table class="table table-hover mb-0 my-3">
         <thead>
             <tr class="table-primary">
                 <th scope="col">#ID</th>
@@ -18,19 +18,26 @@
         </thead>
         <tbody class="table-group-divider">
             <?php foreach ($producto as $row) { ?>
- 
+            
                 
-                    <tr class="table-primary ">
+                    <tr class="table-info">
                         <th scope="row"><?= $row['id_producto']; ?></th>
                         <td><?= $row['producto_nombre']; ?></td>
                         <td><?= $row['producto_descripcion']; ?></td>
                         <td>$ <?= $row ['producto_precio'];?></td>
                         <td><?= $row['producto_stock']; ?></td>
-                        <td><?= $row['producto_categoria']; ?></td>
-                        <td><img src="<?php echo base_url('public/img/' . $row['producto_imagen']); ?>" width="100px" height="100px" alt=""></td>
+                        <td><?= $row['categoria_descripcion']; ?></td>
+                        <td><img src="<?php echo base_url('public/img/'.$row['producto_imagen']); ?>" width="100px" height="100px" alt=""></td>
+                        
                         <td>
-                            <a href="<?php echo base_url('Producto_controller/editarProducto/'.$row['id_producto']);?>" class="btn btn-danger">Editar</a>
-                            <a href="<?php echo base_url('Producto_controller/eliminarProducto/'.$row['id_producto']);?>" class="btn btn-danger">Eliminar</a>
+                        <?php if ($row['estado_producto'] == 1) { ?>
+
+                        <a href="<?php echo base_url('productoController/eliminar_Producto/'.$row['id_producto']);?>" class="btn btn-dark">Eliminar</a>
+
+                        <?php } else { ?>
+                            <a href="<?php echo base_url('productoController/activar_Producto/'.$row['id_producto']);?>" class="btn btn-primary">Activar</a>
+                            <?php  } ?>
+                        <a href="<?php echo base_url('productoController/editar_Producto/'.$row['id_producto']);?>" class="btn btn-danger">Editar</a>
                         </td>
                     </tr>
                 <?php } ?>

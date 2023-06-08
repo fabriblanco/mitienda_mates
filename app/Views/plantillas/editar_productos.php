@@ -2,69 +2,69 @@
     <h2 class="text-center my-3">Editar Productos   </h2>
 
     <?php $validation = \Config\Services::validation(); ?>
-    <?php echo form_open_multipart('/productos_controller/actualizar_Producto') ?> 
+    <?php echo form_open_multipart('/productoController/actualizar_Producto') ?> 
     <div class="row gy-4">
         <div class="col-md-6">
-            <label for="nombreProducto" class="form-label">Nombre: </label>
-            <input type="text" name="nombreProducto" placeholder="Nombre del producto" value="<?= $producto['producto_nombre']; ?>" class="form-control" id="inputText4">
-            <?php if ($validation->getError('nombreProducto')) { ?>
+            <label for="nombre" class="form-label">Nombre: </label>
+            <input type="text" name="nombre" placeholder="Nombre del producto" value="<?= $producto['producto_nombre']; ?>" class="form-control" id="inputText4">
+            <?php if ($validation->getError('nombre')) { ?>
                     <div class='alert alert-danger mt-2'>
-                        <?= $error = $validation->getError('nombreProducto'); ?>
+                        <?= $error = $validation->getError('nombre'); ?>
                     </div>
             <?php } ?>
         </div>
         <div class="col-md-6">
-            <label for="categoriaProducto" class="mb-2">Seleccione la Categoria: </label>
+            <label for="categoria" class="mb-2">Seleccione la Categoria: </label>
             <?php 
                 $lista['0'] = 'Seleccione una categoria';
                 foreach($categorias as $row) {
                     $lista[$row['id_categoria']] = $row['categoria_descripcion'];
                 }
                 $sel = $producto['producto_categoria'];
-                echo form_dropdown('categoriaProducto', $lista, $sel, 'class="form-control"');
+                echo form_dropdown('categoria', $lista, $sel, 'class="form-control"');
             ?>
         </div>
         <div class="col-12">
-            <label for="exampleFormControlTextarea1" for="descripcionProducto" class="form-label">Descripcion del producto</label>
-            <textarea class="form-control border border-dark" value="" name="descripcionProducto" id="exampleFormControlTextarea1" rows="3" maxlength="50" placeholder="Descripción del producto"><?= $producto['producto_descripcion']; ?></textarea>
-            <?php if ($validation->getError('descripcionProducto')) { ?>
+            <label for="exampleFormControlTextarea1" for="descripcion" class="form-label">Descripcion del producto</label>
+            <textarea class="form-control border border-dark" value="" name="descripcion" id="exampleFormControlTextarea1" rows="3" maxlength="5000" placeholder="Descripción del producto"><?= $producto['producto_descripcion']; ?></textarea>
+            <?php if ($validation->getError('descripcion')) { ?>
                     <div class='alert alert-danger mt-2'>
-                        <?= $error = $validation->getError('descripcionProducto'); ?>
+                        <?= $error = $validation->getError('descripcion'); ?>
                     </div>
             <?php } ?>
         </div>
         <div class="col-md-4 input-group">
-            <label for="precioProducto" class="input-group form-label">Precio del producto</label>
+            <label for="precio" class="input-group form-label">Precio del producto</label>
             <span class="input-group-text">$</span>
-            <input type="text" name="precioProducto" id="precioProducto" placeholder="Precio del producto" value="<?= number_format($producto['producto_precio'], 0, ',', '.');  ?>" class="form-control" id="inputText4">
-            <?php if ($validation->getError('precioProducto')) { ?>
+            <input type="text" name="precio" id="precioProducto" placeholder="Precio del producto" value="<?=$producto['producto_precio'];  ?>" class="form-control" id="inputText4">
+            <?php if ($validation->getError('precio')) { ?>
                     <div class='alert alert-danger mt-2'>
-                        <?= $error = $validation->getError('precioProducto'); ?>
+                        <?= $error = $validation->getError('precio'); ?>
                     </div>
             <?php } ?>
         </div>
         <div class="col-md-4">
-            <label for="stockProducto" class="form-label">Stock</label>
-            <input type="number" name="stockProducto" placeholder="Stock" value="<?= $producto['producto_stock']; ?>" class="form-control" id="inputText4">
-            <?php if ($validation->getError('stockProducto')) { ?>
+            <label for="stock" class="form-label">Stock</label>
+            <input type="number" name="stock" placeholder="Stock" value="<?= $producto['producto_stock']; ?>" class="form-control" id="inputText4">
+            <?php if ($validation->getError('stock')) { ?>
                     <div class='alert alert-danger mt-2'>
-                        <?= $error = $validation->getError('stockProducto'); ?>
+                        <?= $error = $validation->getError('stock'); ?>
                     </div>
             <?php } ?>
         </div>
         <div class="col-md-6">
-            <label for="imagenProducto" class="form-label d-block">Imagen</label>
-            <input class="form-control" name="imagenProducto"  type="file" id="formFile">
-            <img class="m-5" src="<?php echo base_url('/public/img/ejemplos/'. $producto['producto_imagen']); ?>" width="100" height="100" alt="">
-            <?php if ($validation->getError('imagenProducto')) { ?>
+            <label for="imagen" class="form-label d-block">Imagen</label>
+            <input class="form-control" name="imagen"  type="file" id="formFile">
+            <img class="m-5" src="<?php echo base_url('/public/img/'. $producto['producto_imagen']); ?>" width="100" height="100" alt="">
+            <?php if ($validation->getError('imagen')) { ?>
                     <div class='alert alert-danger mt-2'>
-                        <?= $error = $validation->getError('imagenProducto'); ?>
+                        <?= $error = $validation->getError('imagen'); ?>
                     </div>
             <?php } ?>
         </div>
         <?php echo form_hidden('id_producto', $producto['id_producto']);?>
         <div class="col-12">
-            <button type="submit" class="btn btn-primary">Actualizar</button>
+            <button type="submit" class="btn btn-primary">Modificar</button>
         </div>
         </div>
 

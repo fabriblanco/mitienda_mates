@@ -1,9 +1,10 @@
 
     <header>
+    <?php $cart = \Config\Services::cart(); ?>
     <?php $session=session(); ?>
       <nav class="menuedit navbar navbar-expand-lg navbar-dark bg-dark text-center" >
   <div class="container-fluid">
-      <a href="#">
+      <a href="">
       <img src="public/img/descargaaa.png" alt="ddd" height="70" width="150">
       </a>
     <button class="bg-secondary navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,10 +22,7 @@
           </a>
           <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
             <li><a class="per dropdown-item" href="<?php echo base_url (' productos ');  ?>">General</a></li>
-            <li><a class="per dropdown-item" href="#">Termos</a></li>
-            <li><a class="per dropdown-item" href="#">Mates</a></li>
-            <li><a class="per dropdown-item" href="#">Bombillas</a></li>
-            <li><a class="per dropdown-item" href="#">Accesorios</a></li>
+            
           </ul>
         </li>
 
@@ -55,15 +53,19 @@
 
               <li class="nav-item mb-4 tipoletra">
               
-              <a class="per nav-link tipoletra"  href="#"> 
+              <a class="per nav-link tipoletra"  href="<?php echo base_url ('datosUser');  ?>"> 
               <i class="fa-solid fa-user tipoletra"> <br>
               <?= $session->get('nombre'); ?>  
               </i> </a>
               </li>
 
               <li class="nav-item">
-              <a class="per mx-2 mb-4 nav-link"  href="#"> 
-              <i class="fa-sharp fa-solid fa-cart-shopping"> <br>  Ver </i>   </a>
+              <a class="per mx-2 mb-4  nav-link"  href="<?php echo base_url (' ver_carrito ');  ?>"> 
+              <i class="bi bi-cart2 position-relative " style="font-size: 25px">
+              <span class="position-absolute translate-middle translate-middle badge rounded-pill bg-danger text-white" style="font-size: 0.6em;">
+                <?= $cart->totalitems(); ?>
+                </span>
+              </i> </a> 
               </li>
               
               <li class="nav-item">

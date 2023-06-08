@@ -56,10 +56,30 @@ $routes->get('carga_productos', 'admin_controller::vista_carga_Productos');
 $routes->post('registra_producto', 'admin_controller::registrar_producto');
 $routes->get('productosAdmin', 'admin_controller::productosAdmin');
 $routes->get('datosUser', 'userController::perfil');
-$routes->get('gestionProd', 'productoController::gestion_prod');
 
-$routes->get('productoController/eliminar_Producto/(:num)', 'productos_controller::eliminar_Producto/$1');
+$routes->get('administrador', 'admin_controller::vista_admin');
+
+//productos
+$routes->get('gestionProd', 'productoController::gestion_prod');
+$routes->get('productoController/activar_Producto/(:num)', 'productoController::activar_Producto/$1');
+$routes->get('productoController/eliminar_Producto/(:num)', 'productoController::eliminar_Producto/$1');
 $routes->get('productoController/editar_Producto/(:num)', 'productoController::editar_Producto/$1');
+$routes->post('/productoController/actualizar_Producto', 'productoController::actualizar_Producto');
+
+//carrito
+$routes->post('add_cart', 'carrito_controller::agregar_carrito');
+$routes->get('ver_carrito', 'carrito_controller::ver_carrito');
+$routes->get('eliminar_item/(:hash)', 'carrito_controller::eliminar_item/$1');
+$routes->get('vaciar_carrito/all', 'carrito_controller::vaciar_carrito');
+
+
+$routes->get('consultas_admin', 'admin_controller::verConsultas_admin');
+
+
+
+
+
+
 
 
 

@@ -1,5 +1,5 @@
-<div class="tipoletra">
-<h1 class="text-center">Nuevo Producto</h1>
+<div class="tipoletra fw-bold">
+<h1 class="text-center mt-3 fw-bold text-uppercase" style="color:#008080;"> nuevo producto </h1>
 <div class="row">
      <div class="col-6 mx-auto">
      <?php $validation = \Config\Services::validation(); ?>
@@ -53,7 +53,7 @@
                 </div>
 
                 <div class="form-group">
-                <label for="categoria">Categoria </label>
+                <label for="categoria">Categoria: </label>
                 <?php
                 $lista['0']='seleccione Categoria';
                 foreach($categorias as $row){
@@ -71,7 +71,7 @@
               <?php } ?>
               
              <div class="col-auto mb-2">
-             <a href="<?php base_url('registra_producto'); ?> "> <button type="submit" class="btn btn-primary" mb-3 >Agregar Producto </button> </a>
+             <a href="<?php base_url('registra_producto'); ?> "> <button type="submit" class="btn btn-primary my-3" >Agregar Producto </button> </a>
              </div>
               
             

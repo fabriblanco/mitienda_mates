@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\categoria_model;
 use App\Models\productos_model;
+use App\Models\consulta_model;
 
 
 
@@ -37,6 +38,23 @@ class admin_controller extends BaseController
         }
     }
 
+    public function consultas_admin()
+    {
+        if (session()->login && session()->perfil == 1) {
+            $consultas = new consulta_model();
+
+            $data['consultas'] = $consultas->findAll();
+
+            $data['titulo'] = 'consultas';
+            echo view('plantillas/encabezado', $data);
+            echo view('plantillas/nav_admin');
+            echo view('plantillas/verConsultas_admin');
+            echo view('plantillas/footer');
+        } else {
+            return redirect()->route('/');
+        }
+    }
+
     public function vista_carga_Productos(){
         $categoria = new categoria_model();
         $data['categorias'] = $categoria->findAll();
@@ -46,6 +64,18 @@ class admin_controller extends BaseController
         echo view('plantillas/formProducto');
         echo view('plantillas/footer');
 
+    }
+
+    public function vista_admin()
+    {
+        if (session()->login && session()->perfil == 1) {
+            $data['titulo'] = 'Administrador';
+            echo view('plantillas/encabezado', $data);
+            echo view('plantillas/nav_admin');
+            echo view('plantillas/footer');
+        } else {
+            return redirect()->route('/');
+        }
     }
 
     public function registrar_producto()

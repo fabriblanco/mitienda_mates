@@ -12,7 +12,7 @@ class consulta_model extends Model
     protected $useAutoIncrement = true;
 
     protected $returnType     = 'array';
-    protected $useSoftDeletes = true;
+    protected $useSoftDeletes = false;
 
     protected $allowedFields = ['consulta_nombre', 'consulta_apellido','consulta_email', 'consulta_motivo','consulta_mensaje'];
 

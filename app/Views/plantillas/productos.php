@@ -13,7 +13,30 @@
                         <div class="card-body mt-2">
                             <h5 class="card-title fw-bold my-3 "><?= $row['producto_nombre']; ?></h5>
                             <span class="d-block card-price ">$ <?= number_format($row['producto_precio'], 2, ',', '.'); ?></span>
-                            <a href="" class="btn btn-primary text-center my-2">Comprar</a>
+
+                            <?php if (session()->login) { ?>
+                                <?php if (session()->perfil == 1) { ?>
+                                    <a href="#" class="btn btn-primary"> Comprar </a> 
+                                <?php } else { ?> 
+                                <?php echo form_open('add_cart');
+                                echo form_hidden('id', $row['id_producto']);
+                                echo form_hidden('nombre', $row['producto_nombre']);
+                                echo form_hidden('precio', $row['producto_precio']);
+                                ?>
+
+                                <?php echo form_submit('comprar','agregar al carrito',"class = 'btn btn-primary my-4'"); ?>
+                                <?php echo form_close(); ?> 
+
+                                <?php } ?>
+
+                                <?php } else { ?>
+                                 
+                                  <a href="<?php echo base_url('formIniciarSesion'); ?>" class="btn btn-primary"> Comprar </a> 
+                                    
+                               <?php } ?> 
+
+
+                           
                         </div>
                     </div>
                 </li>

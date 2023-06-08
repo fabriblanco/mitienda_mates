@@ -35,35 +35,33 @@ class productoController extends BaseController
         //controlar si se cambio la imagen
 
         $idProducto = $this->request->getPost('id_producto'); //se obtiene el id del producto a modificar
-        $precio = $this->request->getPost('precioProducto');
-        $precioSinFormato = str_replace('.', '', $precio);
+      
 
         if ($request->is('post')) {
-            var_dump("entro1");
             
-            if($this->request->getFile('imagenProducto')->isValid()) {
-                var_dump("entro2");
+            if($this->request->getFile('imagen')->isValid()) {
+                
                 $rules = [
-                    'nombreProducto' => 'required',
-                    'marcaProducto' => 'required|is_not_unique[marca.id_marca]',
-                    'descripcionProducto' => 'required',
-                    'precioProducto' => 'required',
-                    'imagenProducto' => 'uploaded[imagenProducto]|max_size[imagenProducto, 4096]|is_image[imagenProducto]',
-                    'stockProducto' => 'required|is_natural'
+                    'nombre' => 'required',
+                    'categoria' => 'required|is_not_unique[categorias.id_categoria]',
+                    'descripcion' => 'required',
+                    'precio' => 'required',
+                    'imagen' => 'uploaded[imagen]|max_size[imagen, 4096]|is_image[imagen]',
+                    'stock' => 'required|is_natural'
                 ];
 
                 $validations = $this->validate($rules);
 
-                $img = $this->request->getFile('imagenProducto');
+                $img = $this->request->getFile('imagen');
                 $nombreAleatorio = $img->getRandomName();
-                $img->move(ROOTPATH . 'public/img/ejemplos', $nombreAleatorio);
+                $img->move(ROOTPATH . 'public/img/', $nombreAleatorio);
                 
                 $data = [
-                    'producto_nombre' => $request->getPost('nombreProducto'),
-                    'producto_descripcion' => $request->getPost('descripcionProducto'),
-                    'producto_precio' => $precioSinFormato,
-                    'producto_stock' => $request->getPost('stockProducto'),
-                    'producto_marca' => $request->getPost('marcaProducto'),
+                    'producto_nombre' => $request->getPost('nombre'),
+                    'producto_descripcion' => $request->getPost('descripcion'),
+                    'producto_precio' => $request->getPost('precio'),
+                    'producto_stock' => $request->getPost('stock'),
+                    'producto_categoria' => $request->getPost('categoria'),
                     'producto_imagen' => $nombreAleatorio
                 ];
                 
@@ -71,21 +69,21 @@ class productoController extends BaseController
             }else {
 
                 $rules = [
-                    'nombreProducto' => 'required',
-                    'marcaProducto' => 'required|is_not_unique[marca.id_marca]',
-                    'descripcionProducto' => 'required',
-                    'precioProducto' => 'required',
-                    'stockProducto' => 'required|is_natural'
+                    'nombre' => 'required',
+                    'categoria' => 'required|is_not_unique[categorias.id_categoria]',
+                    'descripcion' => 'required',
+                    'precio' => 'required',
+                    'stock' => 'required|is_natural'
                 ];
 
                 $validations = $this->validate($rules);
 
                 $data = [
-                    'producto_nombre' => $request->getPost('nombreProducto'),
-                    'producto_descripcion' => $request->getPost('descripcionProducto'),
-                    'producto_precio' => $precioSinFormato,
-                    'producto_stock' => $request->getPost('stockProducto'),
-                    'producto_marca' => $request->getPost('marcaProducto'),
+                    'producto_nombre' => $request->getPost('nombre'),
+                    'producto_descripcion' => $request->getPost('descripcion'),
+                    'producto_precio' => $request->getPost('precio'),
+                    'producto_stock' => $request->getPost('stock'),
+                    'producto_categoria' => $request->getPost('categoria'),
                 ];
                 
             }
@@ -96,19 +94,20 @@ class productoController extends BaseController
 
                 $productoModel->update($idProducto, $data);
 
-                return redirect()->to('gestionProductos')->with('MensajeProducto', 'Producto actualizado correctamente.');
+                return redirect()->to('gestionProd')->with('Mensaje', 'Producto actualizado correctamente.');
             }else {
+                var_dump("entro");
                 $data['validation'] = $this->validator;
                 $productoModel = new productos_model();
                 $categoriaModel = new Categoria_model();
 
-                $data['marcas'] = $categoriaModel->findAll();
+                $data['categorias'] = $categoriaModel->findAll();
                 $data['producto'] = $productoModel->where('id_producto', $idProducto)->first();
 
                 $data['titulo'] = 'Editar Producto';
                 echo view('plantillas/encabezado', $data);
-                echo view('plantillas/navAdmin');
-                echo view('plantillas/editarProducto');
+                echo view('plantillas/nav_admin');
+                echo view('plantillas/editar_productos');
                 echo view('plantillas/footer');
             }
         }else {
@@ -121,8 +120,8 @@ class productoController extends BaseController
 
             $data['titulo'] = 'Editar Producto';
             echo view('plantillas/encabezado', $data);
-            echo view('plantillas/navAdmin');
-            echo view('plantillas/editarProducto');
+            echo view('plantillas/nav_admin');
+            echo view('plantillas/editar_productos');
             echo view('plantillas/footer');
         }
     }
@@ -149,7 +148,7 @@ class productoController extends BaseController
         $data['titulo'] = 'Editar Producto';
         echo view('plantillas/encabezado', $data);
         echo view('plantillas/nav_admin');
-        echo view('plantillas/editarProducto');
+        echo view('plantillas/editar_productos');
         echo view('plantillas/footer');
     }
 

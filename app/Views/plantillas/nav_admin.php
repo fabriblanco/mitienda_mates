@@ -4,7 +4,7 @@
       <nav class="menuedit navbar navbar-expand-lg navbar-dark bg-dark text-center justify-content-around" >
   <div class="container-fluid">
       <a href="#">
-      <img src="public/img/descargaaa.png" alt="ddd" height="70" width="150">
+      <img src="<?php echo base_url ('public/img/descargaaa.png');  ?>" alt="ddd" height="70" width="150">
       </a>
     <button class="bg-secondary navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -28,7 +28,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="per nav-link"  href="#"> Gestionar Productos </a>
+            <a class="per nav-link"  href="<?php echo base_url (' gestionProd');  ?>"> Gestionar Productos  </a>
           </li>
           <li class="nav-item mb-4 tipoletra">
               

@@ -6,7 +6,7 @@
         <div>
             <figure class="text-center">
               <a href="#">
-               <img src="public/img/descargaaa.png" alt="logo" height="90" width="200" >  </a>
+               <img src=" <?php echo base_url ('public/img/descargaaa.png');  ?> " alt="logo" height="90" width="200" >  </a>
             </figure>     
           
         </div>
@@ -22,16 +22,16 @@
               <ul class="list-unstyled text-center">
                   <li class="p-3">
                     <a href="#" class="text-decoration-none text-white">
-                    <img src="public/img/instagram.svg" alt="logo" class="foto" > mate_mos_shop </a>
+                    <img src=" <?php echo base_url ('public/img/instagram.svg');  ?>" alt="logo" class="foto" > mate_mos_shop </a>
                  </li>
             <li>
               <a href="#" class="text-decoration-none text-white ">
-                <img src="public/img/facebook.svg" alt="logo" class="foto" > mate_mos_face 
+                <img src=" <?php echo base_url ('public/img/facebook.svg');  ?>" alt="logo" class="foto" > mate_mos_face 
               </a>
             </li>
             <li class="p-3">
               <a href="#" class="text-decoration-none text-white">
-                  <img src="public/img/twitter.svg" alt="logo" class="foto" >  mate_mos_tw
+                  <img src=" <?php echo base_url ('public/img/twitter.svg');  ?>" alt="logo" class="foto" >  mate_mos_tw
               </a>
             </li>
           </ul>
@@ -81,9 +81,9 @@
 </footer>
 
 
-<script type="../public/js/bootstrap.min.js"></script>
-<script type="../public/js/bootstrap.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="<?php echo base_url ('../public/js/bootstrap.min.js');  ?> "></script>
+<script src=" <?php echo base_url ('../public/js/bootstrap.js');  ?> "></script>
+<script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 </body>
 </html>
