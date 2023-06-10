@@ -11,12 +11,13 @@
                 <th scope="col">Email</th>
                 <th scope="col">Motivo</th>
                 <th scope="col">Mensaje</th>
+                <th scope="col">Estado Consulta</th>
                 
             </tr>
         </thead>
         <tbody class="table-group-divider">
             <?php foreach ($consultas as $row) { ?>
-            
+                <?php if ($row['consulta_estado'] == 1) { ?>
                 
                     <tr class="table-info">
                         <th scope="row"><?= $row['id_consulta']; ?></th>
@@ -25,9 +26,21 @@
                         <td>$ <?= $row ['consulta_email'];?></td>
                         <td><?= $row['consulta_motivo']; ?></td>
                         <td><?= $row['consulta_mensaje']; ?></td>
-    
-                        
+
+                        <td class="fw-bold">Consulta ya respondida</td>
                     </tr>
+                    <?php } else { ?>
+                        <tr class="table-info">
+                        <th scope="row"><?= $row['id_consulta']; ?></th>
+                        <td><?= $row['consulta_nombre']; ?></td>
+                        <td><?= $row['consulta_apellido']; ?></td>
+                        <td>$ <?= $row ['consulta_email'];?></td>
+                        <td><?= $row['consulta_motivo']; ?></td>
+                        <td><?= $row['consulta_mensaje']; ?></td>
+                        <td><a class="btn btn-primary" href="<?php echo base_url ('consulta/'.$row['id_consulta']);  ?>">Marcar como Respondido</a></td>
+                    </tr>
+                    <?php } ?>
+
                 <?php } ?>
         </tbody>
 </table>

@@ -5,7 +5,8 @@ namespace App\Controllers;
 use App\Models\categoria_model;
 use App\Models\productos_model;
 use App\Models\consulta_model;
-
+use App\Models\venta_model;
+use App\Models\detalle_venta_model;
 
 
 
@@ -18,6 +19,46 @@ class admin_controller extends BaseController
         $data['titulo'] = 'admin';
         echo view('plantillas/encabezado', $data);
         echo view('plantillas/nav_admin');
+        echo view('plantillas/footer');
+    }
+
+    public function estado_consulta($id){
+        $consultas = new consulta_model();
+        $data=array(
+                'consulta_estado'=>1
+
+        );
+        $consultas->update($id,$data);
+        
+        return redirect()->route('consultas_admin');
+    }
+
+    public function listar_ventas()
+    {
+        $ventas = new venta_model();
+        
+
+        $data['ventas'] = $ventas->join('personas', 'personas.id_persona = venta.id_persona')->findAll();
+        
+        $data['titulo'] = 'Ventas';
+        echo view('plantillas/encabezado', $data);
+        echo view('plantillas/nav_admin');
+        echo view('plantillas/listar_ventas');
+        echo view('plantillas/footer');
+    }
+
+    public function ver_detalles_venta($id = null) {
+        $detalle = new detalle_venta_model();
+        $venta = new venta_model();
+
+        $data['ventas'] = $venta->where('id_venta', $id)->join('personas', 'personas.id_persona = venta.id_persona')->first();
+
+        $data['detalles'] = $detalle->where('detalle_venta.id_venta', $id)->join('venta', 'venta.id_venta = detalle_venta.id_venta')->join('productos', 'productos.id_producto = detalle_venta.id_producto')->findAll();
+
+        $data['titulo'] = 'Detalle de venta';
+        echo view('plantillas/encabezado', $data);
+        echo view('plantillas/nav_admin');
+        echo view('plantillas/ver_detalles_venta');
         echo view('plantillas/footer');
     }
 
@@ -38,7 +79,7 @@ class admin_controller extends BaseController
         }
     }
 
-    public function consultas_admin()
+    public function verConsultas_admin()
     {
         if (session()->login && session()->perfil == 1) {
             $consultas = new consulta_model();

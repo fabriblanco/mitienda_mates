@@ -5,7 +5,7 @@
       <nav class="menuedit navbar navbar-expand-lg navbar-dark bg-dark text-center" >
   <div class="container-fluid">
       <a href="">
-      <img src="public/img/descargaaa.png" alt="ddd" height="70" width="150">
+      <img src="<?php echo base_url (' public/img/descargaaa.png');  ?>" alt="ddd" height="70" width="150">
       </a>
     <button class="bg-secondary navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -21,8 +21,10 @@
             Productos
           </a>
           <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-            <li><a class="per dropdown-item" href="<?php echo base_url (' productos ');  ?>">General</a></li>
-            
+            <li><a class="per dropdown-item" href="<?php echo base_url (' productos/0 ');  ?>">General</a></li>
+            <li><a class="per dropdown-item" href="<?php echo base_url (' productos/1 ');  ?>">Termos</a></li>
+            <li><a class="per dropdown-item" href="<?php echo base_url (' productos/2 ');  ?>">Mates</a></li>
+            <li><a class="per dropdown-item" href="<?php echo base_url (' productos/3 ');  ?>">Bombillas</a></li>
           </ul>
         </li>
 

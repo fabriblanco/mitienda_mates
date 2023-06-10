@@ -4,17 +4,17 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class consulta_model extends Model
+class detalle_venta_model extends Model
 {
-    protected $table      = 'consultas';
-    protected $primaryKey = 'id_consulta';
+    protected $table      = 'detalle_venta';
+    protected $primaryKey = 'id_venta';
 
-    protected $useAutoIncrement = true;
+    protected $useAutoIncrement = false;
 
     protected $returnType     = 'array';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['consulta_nombre', 'consulta_apellido','consulta_email', 'consulta_motivo','consulta_mensaje','consulta_estado'];
+    protected $allowedFields = ['id_producto','detalle_cantidad','detalle_venta','detalle_precio'];
 
     // Dates
     protected $useTimestamps = false;

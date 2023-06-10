@@ -29,17 +29,23 @@ class Home extends BaseController
         echo view('plantillas/footer');
     }
 
-    public function productos()
+    public function productos($id)
     {
        
         $producto = new productos_model();
-
-        $data['productos'] = $producto->where('estado_producto', 1)->where('producto_stock >', 0)->join('categorias', 'categorias.id_categoria = productos.producto_categoria')->findAll();
+       
+        if ($id==0){
+            $data['productos'] = $producto->where('estado_producto', 1)->where('producto_stock >', 0)->join('categorias', 'categorias.id_categoria = productos.producto_categoria')->findAll();
+        } else {
+            $data['productos'] = $producto->where('estado_producto', 1)->where('producto_stock >', 0)->join('categorias', 'categorias.id_categoria = productos.producto_categoria')->where('producto_categoria',$id)->findAll();
+        }
+        
         $data['titulo'] = 'productos';
         echo view('plantillas/encabezado', $data);
         echo view('plantillas/nav');
         echo view('plantillas/productos');
         echo view('plantillas/footer');
+
     }
 
     public function terminosYcondiciones()

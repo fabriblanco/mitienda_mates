@@ -3,7 +3,12 @@
 <?php $cart = \Config\Services::cart(); ?>
 <h1 class="text-center mt-3 fw-bold text-uppercase" style="color:#008080;"> Carrito de Compras </h1>
 <h3 > <a href="productos" class=" btn btn-outline-danger text-center mt-3 fw-bold text-uppercase text-decoration-none" style="color:#008080;" role="button"> Continuar comprando </a> </h3>
-
+<?php if (session()->getFlashdata('MensajeDeCompra')) { ?>
+                <div class='alert alert-danger alert-dismissible fade show text-center py-3 my-3' role='alert' id='mensaje'>
+                    <?= session()->getFlashdata('MensajeDeCompra'); ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <?php } ?>
 <table class="table table-hover mb-0">
         <?php if ($cart->contents() == NULL) { ?>
             <div class="text-center mb-5">
@@ -47,6 +52,8 @@
             <td>Total Compra:$ <?php echo $total; ?> </td>
             <td><a href="<?php echo base_url('vaciar_carrito/all'); ?>"> <button type="submit" class="btn btn-primary" mb-3> VACIAR CARRITO </button> </a></td>
         </tr>
+
+        <a href="<?php echo base_url('comprar/'.$total); ?>" class="btn btn-outline-danger text-center my-3 fw-bold ms-5" style="color:#008080;">Comprar</a>
         <?php endif; ?>
         </tbody>
         </tbody>

@@ -14,7 +14,7 @@
       <ul class="navbar-nav me-auto mx-5 mb-2 mb-lg-0 fw-bold ">
 
         <li class="nav-item p-0">
-          <a class="per nav-link" href="#"> Ver Consultas </a>
+          <a class="per nav-link" href="<?php echo base_url (' consultas_admin ');  ?>"> Ver Consultas </a>
         </li>
           <li class="nav-item">
             <a class="per nav-link"  href="<?php echo base_url (' productosAdmin ');  ?>" >Ver Productos</a>
