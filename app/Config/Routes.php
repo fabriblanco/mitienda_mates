@@ -29,8 +29,10 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+
+
+//HOME
 $routes->get('/', 'Home::index');
-$routes->get('productos/(:num)', 'Home::productos/$1');
 $routes->get('categoriasPrincipales', 'Home::categoriasPrincipales');
 $routes->get('productosDestacados', 'Home::productosDestacados');
 $routes->get('quienesSomos', 'Home::quienesSomos');
@@ -38,6 +40,8 @@ $routes->get('terminosYcondiciones', 'Home::terminosYcondiciones');
 $routes->get('contacto', 'Home::contacto');
 $routes->get('comercializacion', 'Home::comercializacion');
 $routes->get('formProducto', 'Home::formProducto');
+
+$routes->get('compras/(:num)', 'userController::mis_compras/$1');
 
 
 /*LOGIN*/
@@ -49,39 +53,39 @@ $routes->post('consulta', 'userController::registrar_consulta');
 $routes->post('persona', 'userController::registrar_persona');
 
 
+//ADMIN
 $routes->get('user_admin', 'admin_controller::nav_admin');
-
-//productos
-$routes->get('carga_productos', 'admin_controller::vista_carga_Productos');
-$routes->post('registra_producto', 'admin_controller::registrar_producto');
-$routes->get('productosAdmin', 'admin_controller::productosAdmin');
-$routes->get('datosUser', 'userController::perfil');
-
 $routes->get('administrador', 'admin_controller::vista_admin');
+$routes->get('consultas_admin', 'admin_controller::verConsultas_admin');
+$routes->get('consulta/(:num)', 'admin_controller::estado_consulta/$1');
+$routes->get('listar_ventas', 'admin_controller::listar_ventas');
+$routes->get('detalles/(:num)', 'admin_controller::ver_detalles_venta/$1');
 
-//productos
+
+//GESTION DE PRODUCTOS
+$routes->get('productos/(:num)', 'Home::productos/$1');
 $routes->get('gestionProd', 'productoController::gestion_prod');
 $routes->get('productoController/activar_Producto/(:num)', 'productoController::activar_Producto/$1');
 $routes->get('productoController/eliminar_Producto/(:num)', 'productoController::eliminar_Producto/$1');
 $routes->get('productoController/editar_Producto/(:num)', 'productoController::editar_Producto/$1');
 $routes->post('/productoController/actualizar_Producto', 'productoController::actualizar_Producto');
 
-//carrito
+
+//PRODUCTOS ADMIN
+$routes->get('carga_productos', 'admin_controller::vista_carga_Productos');
+$routes->post('registra_producto', 'admin_controller::registrar_producto');
+$routes->get('productosAdmin', 'admin_controller::productosAdmin');
+$routes->get('datosUser', 'userController::perfil');
+
+
+//CARRITO
 $routes->post('add_cart', 'carrito_controller::agregar_carrito');
+$routes->get('vaciar_carrito/all', 'carrito_controller::vaciar_carrito');
 $routes->get('ver_carrito', 'carrito_controller::ver_carrito');
 $routes->get('eliminar_item/(:hash)', 'carrito_controller::eliminar_item/$1');
-$routes->get('vaciar_carrito/all', 'carrito_controller::vaciar_carrito');
-
-
-$routes->get('consultas_admin', 'admin_controller::verConsultas_admin');
-
 $routes->get('comprar/(:num)', 'carrito_controller::guardar_venta/$1');
 
-$routes->get('listar_ventas', 'admin_controller::listar_ventas');
 
-$routes->get('consulta/(:num)', 'admin_controller::estado_consulta/$1');
-
-$routes->get('detalles/(:num)', 'admin_controller::ver_detalles_venta/$1');
 
 
 

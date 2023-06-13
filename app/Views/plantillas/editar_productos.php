@@ -1,5 +1,6 @@
-<div class="container p-3 tipoletra">
-    <h2 class="text-center my-3">Editar Productos   </h2>
+<div class="container p-3 tipoletra fw-bold">
+    
+    <h2 class="text-center mt-3 fw-bold text-uppercase p-3" style="color:#008080;"> editar producto </h2>
 
     <?php $validation = \Config\Services::validation(); ?>
     <?php echo form_open_multipart('/productoController/actualizar_Producto') ?> 
@@ -36,7 +37,7 @@
         <div class="col-md-4 input-group">
             <label for="precio" class="input-group form-label">Precio del producto</label>
             <span class="input-group-text">$</span>
-            <input type="text" name="precio" id="precioProducto" placeholder="Precio del producto" value="<?=$producto['producto_precio'];  ?>" class="form-control" id="inputText4">
+            <input type="text" name="precio" id="precioProducto" placeholder="Precio del producto" value=" <?= number_format($producto['producto_precio'], 0, ',', '.');  ?>" class="form-control" id="inputText4">
             <?php if ($validation->getError('precio')) { ?>
                     <div class='alert alert-danger mt-2'>
                         <?= $error = $validation->getError('precio'); ?>
@@ -63,8 +64,9 @@
             <?php } ?>
         </div>
         <?php echo form_hidden('id_producto', $producto['id_producto']);?>
-        <div class="col-12">
-            <button type="submit" class="btn btn-primary">Modificar</button>
+
+        <div class="col-12 text-center">
+            <button type="submit" class="btn btn-outline-danger text-center fw-bold text-uppercase text-decoration-none" style="color:#008080;">Confirmar Modificacion</button>
         </div>
         </div>
 

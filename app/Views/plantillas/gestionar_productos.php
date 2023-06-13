@@ -1,11 +1,11 @@
 
-<section class=" tipoletra my-3">
+<section class="container-fluid tipoletra my-3">
     <h1 class="text-center fw-bold text-uppercase my-4" style="color:#008080;"> nuestros productos </h1>
     
 
-<table class="table table-hover mb-0 my-3">
+<table class="table table-hover  table-bordered  mb-0">
         <thead>
-            <tr class="table-primary">
+            <tr class="table-dark">
                 <th scope="col">#ID</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Descripcion</th>
@@ -23,8 +23,10 @@
                     <tr class="table-info">
                         <th scope="row"><?= $row['id_producto']; ?></th>
                         <td><?= $row['producto_nombre']; ?></td>
-                        <td><?= $row['producto_descripcion']; ?></td>
-                        <td>$ <?= $row ['producto_precio'];?></td>
+
+                        <td><?= substr($row['producto_descripcion'], 0, 20) . "..."; ?></td>
+
+                        <td>$ <?= number_format($row['producto_precio'], 0, ',', '.'); ?></td>
                         <td><?= $row['producto_stock']; ?></td>
                         <td><?= $row['categoria_descripcion']; ?></td>
                         <td><img src="<?php echo base_url('public/img/'.$row['producto_imagen']); ?>" width="100px" height="100px" alt=""></td>

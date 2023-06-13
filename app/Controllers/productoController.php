@@ -96,7 +96,8 @@ class productoController extends BaseController
 
                 return redirect()->to('gestionProd')->with('Mensaje', 'Producto actualizado correctamente.');
             }else {
-                var_dump("entro");
+                
+                
                 $data['validation'] = $this->validator;
                 $productoModel = new productos_model();
                 $categoriaModel = new Categoria_model();

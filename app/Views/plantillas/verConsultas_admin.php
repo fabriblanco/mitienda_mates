@@ -1,10 +1,10 @@
-<section class=" tipoletra my-3">
+<section class="container-fluid tipoletra my-3">
     <h1 class="text-center fw-bold text-uppercase my-4" style="color:#008080;"> Consultas Recibidas </h1>
     
 
-<table class="table table-hover mb-0 my-3">
+<table class="table table-hover  table-bordered  mb-0">
         <thead>
-            <tr class="table-primary">
+            <tr class="table-dark">
                 <th scope="col">#ID</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Apellido</th>
@@ -19,7 +19,7 @@
             <?php foreach ($consultas as $row) { ?>
                 <?php if ($row['consulta_estado'] == 1) { ?>
                 
-                    <tr class="table-info">
+                    <tr class="table-primary">
                         <th scope="row"><?= $row['id_consulta']; ?></th>
                         <td><?= $row['consulta_nombre']; ?></td>
                         <td><?= $row['consulta_apellido']; ?></td>
@@ -30,7 +30,7 @@
                         <td class="fw-bold">Consulta ya respondida</td>
                     </tr>
                     <?php } else { ?>
-                        <tr class="table-info">
+                        <tr class="table-primary">
                         <th scope="row"><?= $row['id_consulta']; ?></th>
                         <td><?= $row['consulta_nombre']; ?></td>
                         <td><?= $row['consulta_apellido']; ?></td>

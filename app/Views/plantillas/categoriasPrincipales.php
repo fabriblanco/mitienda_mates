@@ -10,7 +10,7 @@
                   <div class="card-body">
                       <h5 class="card-title fw-bold">Termos</h5>
                       <p class="card-text">Diferentes marcas y tamaños. </p>
-                      <a href="#" class="btn btn-primary text-center my-2">Ver Categoria</a>
+                      <a href="<?php echo base_url (' productos/1 ');  ?>" class="btn btn-primary text-center my-2">Ver Categoria</a>
                     </div>
                 </div>
 
@@ -21,7 +21,7 @@
                     <div class="card-body">
                       <h5 class="card-title fw-bold">Mates</h5>
                       <p class="card-text">Diferentes tamaños y estilos.</p>
-                      <a href="#" class="btn btn-primary text-center my-2">Ver Categoria</a>
+                      <a href="<?php echo base_url (' productos/2 ');  ?>" class="btn btn-primary text-center my-2">Ver Categoria</a>
                     </div>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                     <div class="card-body">
                       <h5 class="card-title fw-bold">Bombillas</h5>
                       <p class="card-text">Diferentes materiales y estilos.</p>
-                      <a href="#" class="btn btn-primary text-center my-2">Ver Categoria</a>
+                      <a href="<?php echo base_url (' productos/3 ');  ?>" class="btn btn-primary text-center my-2">Ver Categoria</a>
                     </div>
                 </div>
 

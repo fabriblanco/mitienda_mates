@@ -12,7 +12,8 @@
                         <img src="<?php echo base_url('public/img/' . $row['producto_imagen']); ?>"  class="card-img-top card-image" alt="...">
                         <div class="card-body mt-2">
                             <h5 class="card-title fw-bold my-3 "><?= $row['producto_nombre']; ?></h5>
-                            <span class="d-block card-price ">$ <?= number_format($row['producto_precio'], 2, ',', '.'); ?></span>
+                            <p><?= substr($row['producto_descripcion'], 0, 20) . "..."; ?></p>
+                            <span class="d-block card-price fw-bold ">$ <?= number_format($row['producto_precio'], 2, ',', '.'); ?></span>
 
                             <?php if (session()->login) { ?>
                                 <?php if (session()->perfil == 1) { ?>

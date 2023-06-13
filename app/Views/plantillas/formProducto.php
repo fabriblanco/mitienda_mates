@@ -13,9 +13,12 @@
               </div>
               <?php } ?>
               </div>
+
+              
+
               <div class="mb-3">
               <label for="descripcion" class="form-label">Descripcion: </label>
-              <input type="text" name="descripcion" class="form-control" placeholder="ingrese descripcion">
+              <textarea class="form-control border border-dark" value="" name="descripcion" id="exampleFormControlTextarea1" rows="3" maxlength="5000" placeholder="Descripción del producto"></textarea>
               <?php if($validation->getError('descripcion')) { ?>
               <div class="alert alert-danger mt-2">
                 <?= $error = $validation->getError ('descripcion'); ?>
